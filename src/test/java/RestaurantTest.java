@@ -76,6 +76,6 @@ class RestaurantTest {
         List<Item> items = restaurant.getMenu();
         List<String> selectedItems = restaurant.selectItems(items);
         int totalOrderValue = restaurant.viewOrderTotal(selectedItems);
-        assertThat(totalOrderPrice,equalTo(388));
+        assertThat(totalOrderValue,equalTo(388));
     }
 }
