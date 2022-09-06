@@ -10,6 +10,10 @@ public class Restaurant {
     public LocalTime closingTime;
     private List<Item> menu = new ArrayList<Item>();
 
+    private List<String> selectedItems = new ArrayList<>();
+
+    private int totalOrderValue;
+
     public Restaurant(String name, String location, LocalTime openingTime, LocalTime closingTime) {
         this.name = name;
         this.location = location;
@@ -61,4 +65,13 @@ public class Restaurant {
         return name;
     }
 
+    public List<String> selectItems(List<Item> items) {
+        items.forEach(i-> selectedItems.add(i.getName()));
+        return selectedItems;
+    }
+
+    public int viewOrderTotal(List<String> selectedItems) {
+        selectedItems.forEach(i-> totalOrderValue += findItemByName(i).getPrice());
+        return totalOrderValue;
+    }
 }
