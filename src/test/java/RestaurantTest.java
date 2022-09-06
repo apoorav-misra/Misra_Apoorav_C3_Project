@@ -7,6 +7,7 @@ import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalTime;
+import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -69,4 +70,12 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    @Test
+    public void calculate_total_order_price_should_be_equal_to_the_sum_of_the_price_of_items_selected(){
+        List<Item> items = restaurant.getMenu();
+        List<String> selectedItems = restaurant.selectItems(items);
+        int totalOrderValue = restaurant.viewOrderTotal(selectedItems);
+        assertThat(totalOrderPrice,equalTo(388));
+    }
 }
